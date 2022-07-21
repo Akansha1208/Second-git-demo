@@ -1,0 +1,47 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="AllLead">
+
+    <aura:attribute name="pickName" type="List" />
+
+    <aura:attribute name="picksel" type="String" />
+
+    <aura:attribute name="LeadList" type="Lead[]" />
+
+     <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+
+    <aura:attribute name="columns" type="List"/>
+
+     <lightning:button variant="brand-outline" class="button" label="View All Lead Records" title="View All Lead Records" onclick="{! c.handleClick }" />
+
+    <div style="width:150px;">
+
+    <lightning:select aura:id="PicklistId" label="" name="LeadSource" value="{!v.picksel}" onchange="{!c.onControllerFieldChange}">
+
+            <option value="" text="Select Lead Source" />
+
+            <aura:iteration items="{!v.pickName}" var="per">
+
+                <option value="{!per}" text="{!per}" /> 
+
+            </aura:iteration>
+
+</lightning:select>
+
+    </div>
+
+<br/><br/>
+
+    <div style="height: 100vh;">
+
+        <lightning:datatable
+
+                keyField="id"
+
+                data="{! v.LeadList }"
+
+                columns="{! v.columns }"
+
+                hideCheckboxColumn="true"/>
+
+    </div>
+
+</aura:component>
