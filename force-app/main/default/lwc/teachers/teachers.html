@@ -1,0 +1,11 @@
+<template>
+    <lightning-record-edit-form object-api-name="Teacher__c" onsuccess={handleSuccess} onsubmit ={handleSubmit}>
+        <lightning-messages>
+        </lightning-messages>
+        <lightning-input-field field-name='Schools__c'></lightning-input-field>
+        <lightning-input-field field-name='EMP_ID__c'></lightning-input-field>
+        <lightning-input-field field-name='Name'></lightning-input-field>
+        <lightning-button class="slds-m-top_small" type="submit" label="Save">
+        </lightning-button>
+    </lightning-record-edit-form>
+</template>

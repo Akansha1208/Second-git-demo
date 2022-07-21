@@ -1,0 +1,32 @@
+<apex:page controller="AccountContactOpportunity">
+<apex:form >
+<apex:pageBlock title="Account Name">
+<apex:selectList value="{!AccId}" size="1">
+<apex:selectOptions value="{!AccountNames}"/>
+<apex:actionSupport event="onchange" action="{!showContact}" reRender="co,co1"/>
+</apex:selectList>
+<apex:pageBlock title="Opportunity list" id="co" >
+<apex:pageBlockTable value="{!opplist}" var="opp">
+
+<apex:column headerValue="Name">
+
+<apex:outputLink value="/{!opp.Id}">{!opp.Name}</apex:outputLink>
+
+</apex:column>
+<apex:column value="{!opp.StageName}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+<apex:pageBlock title="Contact list" id="co1">
+<apex:pageBlockTable value="{!conlist}" var="con">
+
+<apex:column headerValue="Name">
+<!-- <apex:column value="{!con.Name}"> </apex:column> -->
+<apex:outputLink value="/{!con.Id}">{!con.Name}</apex:outputLink>
+
+</apex:column>
+<apex:column value="{!con.Email}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:pageBlock>
+</apex:form>
+</apex:page>
